@@ -31,7 +31,7 @@ import {
 export default function Search({ categories, brands }: SearchPropsType) {
   const [activeFilter, setActiveFilter] = useState('')
   const [toggleFilter, setToggleFilter] = useState(false)
-
+  console.log(categories)
   const router = useRouter()
   const { asPath, locale } = router
   const { q, sort } = router.query
@@ -136,7 +136,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                       <li
                         key={cat.path}
                         className={cn(
-                          'block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
+                          'block text-sm leading-5 text-accent-4  focus:outline-none focus:bg-accent-1 focus:text-accent-8',
                           {
                             underline: activeCategory?.id === cat.id,
                           }
@@ -151,12 +151,25 @@ export default function Search({ categories, brands }: SearchPropsType) {
                           <a
                             onClick={(e) => handleClick(e, 'categories')}
                             className={
-                              'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
+                              'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8'
                             }
                           >
                             {cat.name}
                           </a>
                         </Link>
+                            <ul
+                              className={'lg:px-10'}
+                            >
+                                {cat.subCategories.map( (category: any) => (
+                                  <li key={category.id}>
+                                    <a 
+                                    href="#"
+                                    className={'block lg:inline-block px-6 py-2 lg:p-0 lg:my-2 lg:mx-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8'}
+                                    >
+                                    {category.name}</a>
+                                  </li>
+                                ) )}
+                            </ul>
                       </li>
                     ))}
                   </ul>

@@ -23,17 +23,48 @@ export default function getSiteInfoOperation({}: OperationContext<any>) {
     return Promise.resolve({
       categories: [
         {
-          id: 'new-arrivals',
-          name: 'New Arrivals',
-          slug: 'new-arrivals',
-          path: '/new-arrivals',
+          id: 'Informática',
+          name: 'Informática',
+          slug: 'Informática',
+          path: '/Informática',
+
+          subCategories: [
+            {
+              id: 'Informática',
+              name: 'Informática',
+              slug: 'Informática',
+              path: '/Informática',
+            },
+            {
+              id: 'Informática2',
+              name: 'Informática',
+              slug: 'Informática',
+              path: '/Informática',
+            }
+          ]
         },
         {
           id: 'featured',
           name: 'Featured',
           slug: 'featured',
           path: '/featured',
-        },
+
+          subCategories: [
+              {
+                id: 'Informática',
+                name: 'Informática',
+                slug: 'Informática',
+                path: '/Informática',
+              },
+              {
+                id: 'Informática2',
+                name: 'Informática',
+                slug: 'Informática',
+                path: '/Informática',
+              }
+            ]
+          },
+
       ],
       brands: [],
     })
